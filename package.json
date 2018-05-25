@@ -1,0 +1,19 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Full stack app for reviewing camp sites",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulGansca/YelpCamp.git"
+  },
+  "author": "Gansca Paul Mihai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulGansca/YelpCamp/issues"
+  },
+  "homepage": "https://github.com/PaulGansca/YelpCamp#readme"
+}
