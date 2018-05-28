@@ -2,33 +2,13 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var Campground = require("./models/campground");
+var seedDB = require("./seeds");
 
+seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
-//SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
-
-Campground.create(
-    {
-        name: "Muntele Retezat",
-        image: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Romania_-_camping.jpg",
-        description: "This is the Retezat Mountain, beautiful scenery and host of one of the Highest peaks"
-    }, function(err, campground){
-        if(err){
-            console.log(err);
-        } else {
-            console.log("NEW CAMPGROUND");
-            console.log(campground);
-        }
-    });
 
 // LANDING PAGE
 app.get("/", function(req, res){
@@ -55,10 +35,11 @@ app.get("/campgrounds/new", function(req, res) {
 //SHOW - shows more info about one campground
 app.get("/campgrounds/:id", function(req, res) {
     //find campground with provided ID
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
        if(err){
            console.log(err);
        } else {
+           console.log(foundCampground);
            //show more information about that item
            res.render("show", {campground: foundCampground});
        }
