@@ -16,6 +16,10 @@
                     <h4 class="card-title"><a href="#"><%=campground.name%></a><span class="float-right">$9.00/night</span></h4>
                     <p class="card-text"><%=campground.description%></p>
                     <p><em>Submitted By: <%=campground.author.username%></em></p>
+                    <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                    <form id="delete-form" action="/campgrounds/<%=campground._id%>?_method=delete" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
             <div class="card bg-faded" style="margin-top: 20px">

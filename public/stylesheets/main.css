@@ -5,3 +5,7 @@
 .card .card-text {
     padding: 3px;
 }
+
+#delete-form {
+    display: inline;
+}
