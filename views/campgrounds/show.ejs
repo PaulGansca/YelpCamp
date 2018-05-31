@@ -16,10 +16,12 @@
                     <h4 class="card-title"><a href="#"><%=campground.name%></a><span class="float-right">$9.00/night</span></h4>
                     <p class="card-text"><%=campground.description%></p>
                     <p><em>Submitted By: <%=campground.author.username%></em></p>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
                     <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-                    <form id="delete-form" action="/campgrounds/<%=campground._id%>?_method=delete" method="POST">
+                    <form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=delete" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                    <% } %>
                 </div>
             </div>
             <div class="card bg-faded" style="margin-top: 20px">
@@ -33,6 +35,10 @@
                         <strong><%= comment.author.username %></strong>
                         <span class="float-right">10 days ago</span>
                         <p> <%= comment.text %> </p>
+                        <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                            <input type="submit" class="btn-xs btn-danger btn" value="Delete">
+                        </form>
                     </div>
                 </div>
                 <% }) %>

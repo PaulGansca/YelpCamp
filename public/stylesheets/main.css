@@ -6,6 +6,6 @@
     padding: 3px;
 }
 
-#delete-form {
+.delete-form {
     display: inline;
 }
