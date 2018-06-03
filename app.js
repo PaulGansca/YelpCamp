@@ -18,8 +18,8 @@ var indexRoutes = require("./routes/index");
 
 //seedDB();  seed the DB
 
-mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect("mongodb://paulgansca:paul1998@ds147190.mlab.com:47190/camp_yelp");
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+mongoose.connect(url);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
