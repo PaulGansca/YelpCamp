@@ -13,7 +13,7 @@
             <div class="card">
                 <img class="card-img-top mx-auto" alt="Card image cap" src="<%= campground.image%>">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="#"><%=campground.name%></a><span class="float-right">$9.00/night</span></h4>
+                    <h4 class="card-title"><a href="#"><%=campground.name%></a><span class="float-right">$<%=campground.price%>/night</span></h4>
                     <p class="card-text"><%=campground.description%></p>
                     <p><em>Submitted By: <%=campground.author.username%></em></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
